@@ -12,7 +12,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
 /**
- * This class represents how to spril the files
+ * This class represents how to split the files
  * <p>
  * Example:A csv file can split into multiple files using some n lines as a chunk
  *
@@ -21,15 +21,14 @@ import java.util.concurrent.RecursiveAction;
 public class FileUtil {
     public static final Logger LOGGER = LoggerFactory.getLogger(FileUtil.class);
 
-
-    private File getFile(String path) {
-        LOGGER.info("Get the file from given path-{}", path);
-
-        File file = Paths.get(path).toFile();
-        LOGGER.info("Successfully got the file from the given path and the size is-{}", file.length());
-        return file;
-    }
-
+    /**
+     * Split the files using ForkJoinPool
+     * invoke all the tasks
+     * @param path
+     * @param lineThreshold
+     * @param destination
+     * @throws IOException
+     */
     private void split(String path, int lineThreshold, String destination) throws IOException {
         RecursiveAction fileRecursiveAction = new FileRecursiveAction(Files.readAllLines(Paths.get(path)), destination, lineThreshold);
         ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
