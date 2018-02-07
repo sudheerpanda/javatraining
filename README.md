@@ -1,12 +1,22 @@
 "# Java Training Classes"
 
+
+1. Traverse through the given CSV and for each n lines create a separate txt file and store it into local storage."-completed
+
+How to execute:
+FileUtil is  standalone app.
+After running which will ask for 3 things:
+1>Which file to split
+2>Where to store all the files
+3>At what length the files need to expected to split
+
+if we pass all these three things the files will split and store in the destination directory
+
+
+
 TODO:
 
-
 Multithreading:
-"1. Traverse through the given CSV and for each n lines create a seperate txt file and store it into local storage.
-
-
 
 2. Take the given keywords and make wiki call using the given URL for each keyword. Each call respond with a json response. Parse the response and use the description to create a seperate text file and save to local storage.
 
