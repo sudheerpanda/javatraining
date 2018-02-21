@@ -11,6 +11,7 @@ public enum States implements GenericEnum<String> {
     KOLKATTA("Kolkatta");
 
     String value;
+    int code;
 
     States(String value){
         this.value=value;
@@ -19,4 +20,6 @@ public enum States implements GenericEnum<String> {
     public String getValue() {
         return this.value;
     }
+
+
 }
