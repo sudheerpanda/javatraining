@@ -12,6 +12,11 @@ After running which will ask for 3 things:
 
 if we pass all these three things the files will split and store in the destination directory
 
+Generics:
+Having multiple Enums provide generic getEnumType method that
+takes input value of the enum and return respective enum instance.
+
+
 
 
 TODO:
