@@ -1,6 +1,5 @@
 package com.imaginea.training.wiki;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,10 +9,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
 
 /**
- * This class will connect ot any url and get the response
+ * This class will connect to any url and get the response
  * and sends back to user
  * @author sudheerp
  */
@@ -21,6 +19,12 @@ public class HttpUtil {
 
     private static Logger LOGGER= LoggerFactory.getLogger(HttpUtil.class);
 
+    /**
+     * Connect to Http url
+     * @param url
+     * @param requestMethod
+     * @return
+     */
     public static String connect(String url,String requestMethod) {
 
         try {
