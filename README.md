@@ -48,7 +48,6 @@ TODO:
 
 Multithreading:
 
-
 4. Auto suggests on the words generated from Task #3."
 
 Collections:
