@@ -31,7 +31,7 @@ public class FileRecursiveAction extends RecursiveAction {
 
     @Override
     protected void compute() {
-        addResultsFromTasks(invokeAllFiles());
+        invokeAllFiles();
 
     }
 
@@ -41,19 +41,12 @@ public class FileRecursiveAction extends RecursiveAction {
      */
     private List<FileRecursiveAction> invokeAllFiles() {
         int fileLength = lines.size();
-        FileRecursiveAction task = null;
         int initialSize = 0;
         int maxSize = lineThreshold;
         int fileIndex = 1;
         LOGGER.info("Split the tasks into multiple chunks");
         List<FileRecursiveAction> tasks = new ArrayList<FileRecursiveAction>();
         for (int i = 0; i < fileLength / lineThreshold; i++) {
-            if (lines.size() < lineThreshold) {
-                task = new FileRecursiveAction(lines.subList(initialSize, maxSize), destinationPath, lineThreshold);
-                task.fork();
-                tasks.add(task);
-            } else {
-                System.out.println("Splitting workLoad : " + lineThreshold);
                 fileIndex++;
                 try {
                     Files.write(Paths.get(destinationPath + "bookcsv_" + fileIndex + ".txt"), lines.subList(initialSize, maxSize));
@@ -62,21 +55,9 @@ public class FileRecursiveAction extends RecursiveAction {
                 }
                 initialSize = maxSize;
                 maxSize = initialSize + lineThreshold;
-            }
         }
         LOGGER.info("Successfully split and forked the files");
         return tasks;
     }
 
-    /**
-     * Join all the tasks
-     * @param tasks
-     */
-    private void addResultsFromTasks(List<FileRecursiveAction> tasks) {
-        LOGGER.info("Join all the tasks");
-        for (FileRecursiveAction task : tasks) {
-            task.join();
-        }
-        LOGGER.info("Success fully joined and created the split files");
-    }
 }
