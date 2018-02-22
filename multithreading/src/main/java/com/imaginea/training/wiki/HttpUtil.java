@@ -26,10 +26,9 @@ public class HttpUtil {
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            // optional default is GET
             con.setRequestMethod(requestMethod);
             int responseCode = con.getResponseCode();
-            LOGGER.info("\nSending 'GET' request to URL : " + url);
+            LOGGER.info("\nSending '"+requestMethod+"' request to URL : " + url);
             LOGGER.info("Response Code : " + responseCode);
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
